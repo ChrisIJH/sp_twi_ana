@@ -1,4 +1,4 @@
-import pers_authe
+import pers_authe as authe
 from twython import TwythonStreamer
 import pandas as pd
 
