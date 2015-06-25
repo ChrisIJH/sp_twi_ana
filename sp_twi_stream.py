@@ -12,7 +12,7 @@ class MyStreamer(TwythonStreamer):
         print status_code
         self.disconnect()
 
-sp = pd.read_table('sp500', header=None)
+sp = pd.read_table('100sp', header=None)
 tickr = sp[0]
 names = sp[1]
 
