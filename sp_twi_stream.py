@@ -12,16 +12,20 @@ class MyStreamer(TwythonStreamer):
         print status_code
         self.disconnect()
 
-sp = pd.read_table('sp500', header=None)
+sp = pd.read_table('100sp', header=None)
 tickr = sp[0]
-names = sp[1]
 
 tmp = tickr[0]
 for i in tickr[1:]:
     tmp = tmp + ', '  + i
-for i in names:
-    tmp = tmp + ', ' + i
-tmp = tmp.replace('.', '')
+#for i in names:
+#    tmp = tmp + ', ' + i
+#tmp = tmp.replace('.', '')
 
 stream = MyStreamer(authe.consumer_key, authe.consumer_secret, authe.access_token, authe.access_token_secret)
-stream.statuses.filter(track=tmp)
+
+while True:
+	try:
+		stream.statuses.filter(track=tmp)
+	except:
+		continue
